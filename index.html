@@ -1,0 +1,241 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>pagePiling.js plugin</title>
+	<meta name="author" content="Alvaro Trigo Lopez">
+	<meta name="description" content="pagePiling.js plugin by Alvaro Trigo.">
+	<meta name="keywords" content="pile,piling,piling.js,stack,pages,scrolling,stacking,touch,fullpile,scroll,plugin,jquery">
+	<meta name="Resource-type" content="Document">
+
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+	<link rel="stylesheet" type="text/css" href="../jquery.pagepiling.css">
+	<link rel="stylesheet" type="text/css" href="examples.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+	<script type="text/javascript" src="../jquery.pagepiling.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			/*
+			* Plugin intialization
+			*/
+	    	$('#pagepiling').pagepiling({
+	    		menu: '#menu',
+	    		anchors: ['page1', 'page2', 'page3', 'page4'],
+			    sectionsColor: ['white', '#ee005a', '#2C3E50', '#39C'],
+			    navigation: {
+			    	'position': 'right',
+			   		'tooltips': ['Page 1', 'Page 2', 'Page 3', 'Page 4']
+			   	},
+			    afterRender: function(){
+			    	$('#pp-nav').addClass('custom');
+			    },
+			    afterLoad: function(anchorLink, index){
+			    	if(index>1){
+			    		$('#pp-nav').removeClass('custom');
+			    	}else{
+			    		$('#pp-nav').addClass('custom');
+			    	}
+			    }
+			});
+
+
+			/*
+		    * Internal use of the demo website
+		    */
+		    $('#showExamples').click(function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				$('#examplesList').toggle();
+			});
+
+			$('html').click(function(){
+				$('#examplesList').hide();
+			});
+	    });
+    </script>
+
+
+    <style>
+    /* Section 1
+	 * --------------------------------------- */
+	#section1 h1{
+		color: #444;
+	}
+	#section1 p{
+		color: #333;
+		color: rgba(0,0,0,0.3);
+	}
+	#section1 img{
+		margin: 20px 0;
+		opacity: 0.7;
+	}
+
+	/* Section 2
+	 * --------------------------------------- */
+	#section2 h1,
+	#section2 p{
+		z-index: 3;
+	}
+	#section2 p{
+		opacity: 0.8;
+	}
+
+	#section2 #colors{
+		right: 60px;
+		bottom: 0;
+		position: absolute;
+		height: 413px;
+		width: 258px;
+		background-image: url(imgs/colors.gif);
+		background-repeat: no-repeat;
+	}
+
+	/* Section 3
+	 * --------------------------------------- */
+	#section3 #colors{
+		left: 60px;
+		bottom: 0;
+	}
+	#section3 p{
+		color: #757575;
+	}
+
+	#colors2,
+	#colors3{
+		position: absolute;
+		height: 163px;
+		width: 362px;
+		z-index: 1;
+		background-repeat: no-repeat;
+		left: 0;
+		margin: 0 auto;
+		right: 0;
+	}
+	#colors2{
+		background-image: url(imgs/colors2.gif);
+		top:0;
+	}
+	#colors3{
+		background-image: url(imgs/colors3.gif);
+		bottom:0;
+	}
+
+	/* Section 4
+	 * --------------------------------------- */
+	#section4 p{
+		opacity: 0.6;
+	}
+
+	/* Overwriting fullPage.js tooltip color
+	* --------------------------------------- */
+	#pp-nav.custom .pp-tooltip{
+		color: #AAA;
+	}
+	#markup{
+		display: block;
+		width: 450px;
+		margin: 20px auto;
+		text-align: left;
+	}
+
+</style>
+
+</head>
+<body class="pp-viewing-page1">
+	<ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+		<li data-menuanchor="page2" class=""><a href="#page2">Page 2</a></li>
+		<li data-menuanchor="page3" class=""><a href="#page3">Page 3</a></li>
+		<li data-menuanchor="page4" class=""><a href="#page4">Page 4</a></li>
+	</ul>
+
+
+	<div id="pagepiling" style="overflow: hidden; touch-action: none;">
+	    <div class="section pp-section pp-table pp-easing active" id="section1" data-anchor="page1" style="z-index: 4; background-color: white; transform: translate3d(0px, 0px, 0px);"><div class="pp-tableCell" style="height:100%">
+	    	<h1>pagePiling.js</h1>
+			<p>Create an original scrolling site</p>
+			<img src="imgs/pagePiling-plugin.gif" alt="pagePiling">
+			<br>
+
+	    </div></div>
+	    <div class="section pp-section pp-table pp-easing" id="section2" data-anchor="page2" style="z-index: 3; background-color: rgb(238, 0, 90); transform: translate3d(0px, 0px, 0px);"><div class="pp-tableCell" style="height:100%">
+	    	<div class="intro">
+	    		<div id="colors"></div>
+	    		<h1>jQuery plugin</h1>
+	    		<p>Pile your sections one over another and access them scrolling or by URL!</p>
+	    		<div id="markup">
+	    			<link rel="stylesheet" href="https://github.githubassets.com/assets/gist-embed-27358812d17d7bcf3a9f15cbd179399a.css"><div id="gist14744186" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-gistfile1-html" class="file my-2">
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-html  ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8" data-paste-markdown-skip="">
+      <tbody><tr>
+        <td id="file-gistfile1-html-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-gistfile1-html-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">id</span>="<span class="pl-s">pagepiling</span>"<span class="pl-kos">&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="file-gistfile1-html-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-gistfile1-html-LC2" class="blob-code blob-code-inner js-file-line">    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">section</span>"<span class="pl-kos">&gt;</span>Some section<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="file-gistfile1-html-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-gistfile1-html-LC3" class="blob-code blob-code-inner js-file-line">    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">section</span>"<span class="pl-kos">&gt;</span>Some section<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="file-gistfile1-html-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-gistfile1-html-LC4" class="blob-code blob-code-inner js-file-line">    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">section</span>"<span class="pl-kos">&gt;</span>Some section<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="file-gistfile1-html-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-gistfile1-html-LC5" class="blob-code blob-code-inner js-file-line">    <span class="pl-kos">&lt;</span><span class="pl-ent">div</span> <span class="pl-c1">class</span>="<span class="pl-s">section</span>"<span class="pl-kos">&gt;</span>Some section<span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></td>
+      </tr>
+      <tr>
+        <td id="file-gistfile1-html-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-gistfile1-html-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span></td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/alvarotrigo/4a87a4b8757d87df8a72/raw/0ac2cd0caa8c2fc528ff85c42ee08b6d441e6464/gistfile1.html" style="float:right">view raw</a>
+        <a href="https://gist.github.com/alvarotrigo/4a87a4b8757d87df8a72#file-gistfile1-html">gistfile1.html</a>
+        hosted with ❤ by <a href="https://github.com">GitHub</a>
+      </div>
+    </div>
+</div>
+
+	    		</div>
+	    	</div>
+	    </div></div>
+	    <div class="section pp-section pp-table pp-easing" id="section3" data-anchor="page3" style="z-index: 2; background-color: rgb(44, 62, 80); transform: translate3d(0px, 0px, 0px);"><div class="pp-tableCell" style="height:100%">
+	    	<div class="intro">
+	    		<h1>Configurable</h1>
+	    		<p>Plenty of options, methods and callbacks to use.</p>
+	    		<div id="colors2"></div>
+	    		<div id="colors3"></div>
+	    	</div>
+	    </div></div>
+	    <div class="section pp-section pp-table pp-easing" id="section4" data-anchor="page4" style="z-index: 1; background-color: rgb(51, 153, 204); transform: translate3d(0px, 0px, 0px);"><div class="pp-tableCell" style="height:100%">
+	    	<div class="intro">
+	    		<h1>Compatible</h1>
+	    		<p>Designed to work on tablet and mobile devices.</p>
+	    		<p>Oh! And its compatible with old browsers such as IE 8 or Opera 12!</p>
+	    	</div>
+	    </div></div>
+	</div>
+
+
+
+<div id="pp-nav" class="right custom" style="color: rgb(0, 0, 0); margin-top: -43.5px;"><ul><li data-tooltip="Page 1"><a href="#page1" class="active"><span style="border-color: rgb(0, 0, 0);"></span></a></li><li data-tooltip="Page 2"><a href="#page2" class=""><span style="border-color: rgb(0, 0, 0);"></span></a></li><li data-tooltip="Page 3"><a href="#page3" class=""><span style="border-color: rgb(0, 0, 0);"></span></a></li><li data-tooltip="Page 4"><a href="#page4" class=""><span style="border-color: rgb(0, 0, 0);"></span></a></li></ul></div></body></html>
